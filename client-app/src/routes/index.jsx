@@ -34,6 +34,7 @@ import ShiftView from "../pages/shift/View";
 import TrackingPage from "../pages/Tracking/TrackingPage";
 import { USER_ROLES } from "../services/authService";
 import { Dashboard } from "../components/Dashboard";
+import MotorcycleInfringementForm from "../pages/MotorcycleInfringement/MotorcycleInfringement";
 // Layouts
 const MainLayout = React.lazy(() => import("../layouts/MainLayout"));
 
@@ -65,7 +66,7 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
 const AppRoutes = () => {
   return (
     <Routes>
-      
+
       {/* Rutas públicas */}
       <Route path="/login" element={<Login />} />
       <Route path="/" element={<RoleBasedRedirect />} />
@@ -78,7 +79,7 @@ const AppRoutes = () => {
           </React.Suspense>
         }
       >
-         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         {/* Rutas de cliente */}
         <Route
           path="/customers/*"
@@ -156,11 +157,11 @@ const AppRoutes = () => {
         <Route path="/customers/:customerId/orders" element={<OrderList />} />
         <Route path="/customers/:customerId/orders/new" element={<OrderForm />} />
         <Route path="/customers/:customerId/orders/:id" element={<OrderView />} />
-        <Route 
-          path="/customers/:customerId/orders/edit/:id" 
-          element={<OrderForm isEdit />} 
+        <Route
+          path="/customers/:customerId/orders/edit/:id"
+          element={<OrderForm isEdit />}
         />
-       
+
         {/* Rutas de turnos (shifts) */}
         <Route path="/shifts" element={<ShiftList />} />
         <Route path="/shifts/new" element={<ShiftForm />} />
@@ -176,10 +177,14 @@ const AppRoutes = () => {
         <Route path="/motorcycles/:motorcycleId/shifts/new" element={<ShiftForm />} />
 
         {/* Rutas para Issues */}
-      <Route path="/motorcycles/:motorcycleId/issues" element={<IssueList />} />
-      <Route path="/motorcycles/:motorcycleId/issues/new" element={<IssueForm />} />
-      <Route path="/motorcycles/:motorcycleId/issues/:id" element={<IssueView />} />
-      <Route path="/motorcycles/:motorcycleId/issues/edit/:id" element={<IssueForm isEdit />} />
+        <Route path="/motorcycles/:motorcycleId/issues" element={<IssueList />} />
+        <Route path="/motorcycles/:motorcycleId/issues/new" element={<IssueForm />} />
+        <Route path="/motorcycles/:motorcycleId/issues/:id" element={<IssueView />} />
+        <Route path="/motorcycles/:motorcycleId/issues/edit/:id" element={<IssueForm isEdit />} />
+
+
+
+        <Route path="/motorcycles/:id/:license_plate/:year/infringements/new" element={<MotorcycleInfringementForm />} />
       </Route>
 
       {/* Rutas especiales */}
