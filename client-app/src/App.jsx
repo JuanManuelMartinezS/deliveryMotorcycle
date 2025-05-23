@@ -22,6 +22,7 @@ function App() {
             <Route path="/restaurant" element={<ProtectedRoute><RestaurantDashboard /></ProtectedRoute>} />
             <Route path="/customer" element={<ProtectedRoute><CustomerDashboard /></ProtectedRoute>} />
             <Route path="/driver" element={<ProtectedRoute><DriverDashboard /></ProtectedRoute>} />
+           
           </Routes>
         </div>
       </AuthProvider>

@@ -38,7 +38,7 @@ const MotorcycleList: React.FC = () => {
           'success'
         );
       } catch (err) {
-         // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const errorMessage = (err as any)?.response?.data?.message || (err instanceof Error ? err.message : String(err));
         showNotification(errorMessage, 'error');
         Swal.fire(
@@ -78,7 +78,7 @@ const MotorcycleList: React.FC = () => {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     id
                   </th>
                   <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -108,7 +108,7 @@ const MotorcycleList: React.FC = () => {
                 ) : (
                   motorcycles.map((motorcycle) => (
                     <tr key={motorcycle.id} className="hover:bg-gray-50">
-                        <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm font-medium text-gray-900">{motorcycle.id}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
@@ -121,13 +121,12 @@ const MotorcycleList: React.FC = () => {
                         <div className="text-sm text-gray-500">{motorcycle.year}</div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                          motorcycle.status === 'available' ? 'bg-green-100 text-green-800' :
-                          motorcycle.status === 'in-maintenance' ? 'bg-yellow-100 text-yellow-800' :
-                          'bg-red-100 text-red-800'
-                        }`}>
+                        <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${motorcycle.status === 'available' ? 'bg-green-100 text-green-800' :
+                            motorcycle.status === 'in-maintenance' ? 'bg-yellow-100 text-yellow-800' :
+                              'bg-red-100 text-red-800'
+                          }`}>
                           {motorcycle.status === 'available' ? 'Disponible' :
-                           motorcycle.status === 'in-maintenance' ? 'En mantenimiento' : 'No disponible'}
+                            motorcycle.status === 'in-maintenance' ? 'En mantenimiento' : 'No disponible'}
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -173,6 +172,13 @@ const MotorcycleList: React.FC = () => {
                             title="Eliminar"
                           >
                             <FiTrash2 className="h-5 w-5" />
+                          </button>
+                          <button
+                            onClick={() => navigate(`/motorcycles/${motorcycle.id}/${motorcycle.license_plate}/${motorcycle.year}/infringements/new`)}
+                            className="text-pink-600 hover:text-pink-900 p-1 rounded-full hover:bg-pink-50"
+                            title="Crear infracción"
+                          >
+                            <FiAlertTriangle className="h-5 w-5" />
                           </button>
                         </div>
                       </td>
